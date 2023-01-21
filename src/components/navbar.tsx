@@ -1,4 +1,6 @@
-function NavbarElement(props: { className?: string, children: string, href: string }) {
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
+
+function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
         <a href={props.href}>
             <div className={props.className + " flex flex-row content-center bg-white p-5"}>
@@ -11,7 +13,7 @@ function NavbarElement(props: { className?: string, children: string, href: stri
 export default function Navbar() {
     return (
         <nav className='flex bg-white'>
-            <NavbarElement className='text-3xl ml-auto' href='/'>PostCard</NavbarElement>
+            <NavbarElement className='text-3xl ml-auto' href='/'><DynamicFeedIcon /><span className='p-2'></span>Post-That</NavbarElement>
             <div className='ml-auto text-3xl h-auto flex pr-5'>
                 <NavbarElement href="/login">Login</NavbarElement>
                 <NavbarElement href='/editor'>Editor</NavbarElement>
