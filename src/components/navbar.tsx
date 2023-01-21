@@ -17,6 +17,7 @@ export default function Navbar() {
             <div className='ml-auto text-3xl h-auto flex pr-5'>
                 <NavbarElement href="/api/auth/login">Login</NavbarElement>
                 <NavbarElement href='/editor'>Editor</NavbarElement>
+                <NavbarElement href="/api/auth/logout">Logout</NavbarElement>
             </div>
 
 
