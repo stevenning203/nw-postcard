@@ -10,7 +10,6 @@ export default function PageTemplate(props: { children: React.ReactNode, classNa
             </Head>
             <Navbar />
             <div className={props.className}>
-                Hello
                 {props.children}
             </div>
             <Footer />
