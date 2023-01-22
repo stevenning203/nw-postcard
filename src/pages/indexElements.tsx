@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+//@ts-ignore
 import {ReactCurvedText as Curve} from 'react-curved-text';
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed"
 
