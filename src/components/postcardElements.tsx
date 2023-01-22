@@ -137,20 +137,12 @@ width: 50%;
 height: 100%;
 margin-left: -5%;
 margin-top: -10%;
-
 `
 export const From = styled(TextField)`
 margin-left: 15%;
 
 `
 export const To = styled(TextField)`
-margin-left: 15%;
-
-`
-export const PrintDate = styled.p`
-font-family: 'Roboto Slab';
-font-type: bold;
-font-size: 30px;
 margin-left: 15%;
 `
 export const Flowers = styled.div`

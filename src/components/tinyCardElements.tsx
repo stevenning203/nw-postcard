@@ -105,12 +105,6 @@ resize: none;
 font-family: "Roboto Slab";
 margin-top: -5px;
 `
-export const PrintDate = styled.p`
-font-family: 'Roboto Slab';
-font-type: bold;
-font-size: 15px;
-margin-top: -10px;
-`
 export const Flowers = styled.div`
 background: url('/flowers.png');
 background-repeat: no-repeat;
