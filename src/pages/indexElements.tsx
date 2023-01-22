@@ -8,14 +8,13 @@ font-family: "Roboto";
 export const TextWrap1 = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: -22%;
+margin-bottom: -10%;
 `
 export const TextWrap2 = styled.div`
 display: flex;
 flex-direction: column;
-margin-top: -30%;
-margin-bottom: 5%;
+margin-top: -15%;
 `
 export const Icon = styled(DynamicFeedIcon)`
-transform: scale(1.3);
+transform: scale(9);
 `
