@@ -1,6 +1,8 @@
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import {SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CIcon } from './navbarElements'
+
 
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
@@ -12,12 +14,46 @@ function NavbarElement(props: { className?: string, children: React.ReactNode, h
     )
 }
 
+function NavbarColour(props: { className?: string }) {
+    return (
+            <div className={"items-center flex flex-row content-center p-5"}>
+                <CIcon style={{ color: props.className }} />
+            </div>
+    )
+}
+
+
 export function EditorBar() {
     return (
-        <nav className='bg-[#A94E4E] items-center flex'>
-            <NavbarElement className='text-3xl' href='/'><DynamicFeedIcon /><span className='p-2'></span>Post-That</NavbarElement>
-            <div className='text-center'></div>
-            <div className='ml-auto pr-5'><form onSubmit={() => { }}><button type='submit'><SendIcon className='text-5xl' /></button></form></div>
+        <nav className='bg-[#EBE3D7] items-center flex'>
+             <NavbarElement className='items-center' href='/'>
+                <LeftArrowIcon />
+            </NavbarElement>
+
+            <div className='flex flex-center items-center justify-center grow'>
+            <NavbarElement className='items-center' href='/'>
+                <SearchIcon />
+            </NavbarElement>
+
+            <NavbarColour className='white' />
+            <NavbarColour className='grey' />
+            <NavbarColour className='black' />
+            <NavbarColour className='red' />
+            <NavbarColour className='yellow' />
+            <NavbarColour className='green' />
+            <NavbarColour className='blue' />
+
+            <NavbarElement className='items-center' href='/'>
+                <AddIcon />
+            </NavbarElement>
+            <NavbarElement className='items-center' href='/'>
+                <ProfileIcon />
+            </NavbarElement>         
+            </div>   
+
+            <div className='ml-auto pr-5'><form onSubmit={() => { }}><button type='submit'>          
+            <ExportIcon />
+</button></form></div>
         </nav >
     )
 }
