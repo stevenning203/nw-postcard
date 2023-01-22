@@ -15,8 +15,8 @@ function NavbarElement(props: { className?: string, children: React.ReactNode, h
 export default function Navbar() {
     const { user, error, isLoading } = useUser();
     return (<>
-        <nav className='shadow flex bg-[#7D6643] text-white'>
-            <NavbarElement className='text-5xl ml-auto' href='/'><DynamicFeedIcon style={{fontSize: 50}}/><span className='p-2'></span>Post-That</NavbarElement>
+        <nav className='shadow flex bg-[#426574] text-white'>
+            <NavbarElement className='text-5xl ml-auto' href='/'><DynamicFeedIcon style={{fontSize: 50, color: 'white'}}/><span className='p-2'></span>Post-That</NavbarElement>    
             <div className='ml-auto text-4xl h-auto flex pr-5'>
                 {user && <NavbarElement href='/posts/0'>Gallery</NavbarElement>}
                 {user && <NavbarElement href='/editor'>Editor</NavbarElement>}
