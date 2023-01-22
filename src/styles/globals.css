@@ -5,6 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    overflow-x: hidden;
+}
 a:hover { 
     color: #134b5f;
 }
