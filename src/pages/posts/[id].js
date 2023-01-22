@@ -1,9 +1,9 @@
 import PageTemplate from '@/components/page_template';
 import { google } from 'googleapis'
 import Gallery from '../gallery';
-import MiniPostcard from '@/components/mini_postcard';
 import TinyCard from '@/components/tinyCard';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import BigPostcard from '@/components/bigPostcard';
 
 export async function getServerSideProps({ query }) {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] })
@@ -56,7 +56,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
     }
 
     return (
-        <div>
+<div>
             {gallery ?
                 <PageTemplate>
                     <h1 className='text-center text-5xl my-10'>Gallery</h1>
@@ -92,8 +92,9 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                 </PageTemplate> :
                 <div>
                     <PageTemplate>
-                        <h1>{title}</h1>
-                        <div>{content}</div>
+                    <div className='flex justify-center items-center mx-[10%] w-[80%]'>
+                    <BigPostcard content={content} from={from} to={to} />
+                    </div>
                     </PageTemplate>
                 </div>}
         </div>
