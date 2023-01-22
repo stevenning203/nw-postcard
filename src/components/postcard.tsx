@@ -1,6 +1,5 @@
-import { CD, Container, PostcardWrap, Form, PostCardTitle, ComponentsWrap, GridWrap, ImgWrap, Stamp, PostageOverlay, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CIcon } from './postcardElements'
+import { CD, Container, PostcardWrap, Form, PostCardTitle, ComponentsWrap, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
 import { useState } from "react";
-import CanvasDraw from "react-canvas-draw";
 import classNames from 'classnames';
 import React from 'react';
 import SubmitPostCard from '@/logic/submit';
@@ -8,18 +7,10 @@ import SubmitPostCard from '@/logic/submit';
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
         <a href={props.href}>
-            <div className={props.className + " flex flex-row content-center p-5"}>
+            <div className={props.className + " flex flex-row content-center p-5 pl-6"}>
                 <div>{props.children}</div>
             </div>
         </a>
-    )
-}
-
-function NavbarColour(props: { className?: string }) {
-    return (
-        <div className={"items-center flex flex-row content-center p-5"}>
-            <CIcon style={{ color: props.className }} />
-        </div>
     )
 }
 
@@ -68,122 +59,122 @@ const Postcard = () => {
                     <LeftArrowIcon />
                 </NavbarElement>
 
-            <div className='flex flex-center items-center justify-center grow'>
-                <NavbarElement className='items-center' href='/'>
-                    <SearchIcon />
-                </NavbarElement>
+                <div className='flex flex-center items-center justify-center grow'>
+                    <NavbarElement className='items-center' href='/'>
+                        <SearchIcon />
+                    </NavbarElement>
+                    <CPick
+                        triangle={"hide"}
+                        color={brushColor}
+                        colors={colors}
+                        width={360}
+                        circleSpacing={22}
+                        onChangeComplete={(c: { hex: React.SetStateAction<string>; }) => setBrushColor(c.hex)}
+                    />
 
-                <NavbarColour className='white' />
-                <NavbarColour className='grey' />
-                <NavbarColour className='black' />
-                <NavbarColour className='red' />
-                <NavbarColour className='yellow' />
-                <NavbarColour className='green' />
-                <NavbarColour className='blue' />
+                    <UndoIcon onClick={() => {
+                        canvasRef.current.undo();
+                    }} />
 
-                <UndoIcon onClick={() => {
-                    canvasRef.current.undo();
-                }} />
-
-                <NavbarElement className='items-center' href='/'>
-                    <AddIcon />
-                </NavbarElement>
-                <NavbarElement className='items-center' href='/'>
-                    <ProfileIcon />
-                </NavbarElement>
-            </div>
+                    <NavbarElement className='items-center' href='/'>
+                        <AddIcon />
+                    </NavbarElement>
+                    <NavbarElement className='items-center' href='/'>
+                        <ProfileIcon />
+                    </NavbarElement>
+                </div>
 
                 <div className='ml-auto pr-5'></div>
-        </nav >
+            </nav >
 
-        <Container>
-            <PostcardWrap>
-                <PostCardTitle>POSTCARD</PostCardTitle>
+            <Container>
+                <PostcardWrap>
+                    <PostCardTitle>POSTCARD</PostCardTitle>
                     <Form ref={ref} onSubmit={(e) => {
                         e.preventDefault();
                         SubmitPostCard(e, document.forms[0]);
                     }}>
-                    <ComponentsWrap>
-                        <GridWrap>
-                            <MessageWrap>
-                                <Message
-                                    required
-                                    label="Required"
-                                    defaultValue="Insert your own special message here!"
-                                    multiline
-                                    maxRows={3}
-                                    variant="standard"
+                        <ComponentsWrap>
+                            <GridWrap>
+                                <MessageWrap>
+                                    <Message
+                                        required
+                                        label="Required"
+                                        defaultValue="Insert your own special message here!"
+                                        multiline
+                                        maxRows={3}
+                                        variant="standard"
                                         name="Content"
 
-                                    inputProps={{
-                                        style: {
-                                            fontSize: 40,
-                                            lineHeight: 2,
-                                            fontFamily: "Homemade Apple",
-                                        }
-                                    }}
-                                />
+                                        inputProps={{
+                                            style: {
+                                                fontSize: 40,
+                                                lineHeight: 2,
+                                                fontFamily: "Homemade Apple",
+                                            }
+                                        }}
+                                    />
 
-                                <Flowers />
-                            </MessageWrap>
-                            <Divider />
-                            <FromToWrap>
-                                <ImgWrap>
-                                    <Stamp>
-                                        <CD {...props} />
-                                    </Stamp>
-                                    {/* <PostageOverlay /> */}
-                                </ImgWrap>
-                                <From
-                                    required
-                                    label="Required"
-                                    defaultValue="From: sender"
-                                    multiline
-                                    maxRows={2}
-                                    variant="standard"
+                                    <Flowers />
+                                </MessageWrap>
+                                <Divider />
+                                <FromToWrap>
+                                    <ImgWrap>
+                                        <Stamp>
+                                            <CD {...props} />
+                                        </Stamp>
+                                        {/* <PostageOverlay /> */}
+                                    </ImgWrap>
+                                    <From
+                                        required
+                                        label="Required"
+                                        defaultValue="From: sender"
+                                        multiline
+                                        maxRows={2}
+                                        variant="standard"
                                         name='From'
 
-                                    inputProps={{
-                                        style: {
-                                            fontSize: 30,
-                                            lineHeight: 2,
-                                            letterSpacing: 2,
-                                            fontFamily: 'Roboto Slab',
-                                        }
-                                    }}
-                                />
-                                <To
-                                    required
-                                    label="Required"
-                                    defaultValue="To: Email"
-                                    multiline
-                                    maxRows={2}
-                                    variant="standard"
+                                        inputProps={{
+                                            style: {
+                                                fontSize: 30,
+                                                lineHeight: 2,
+                                                letterSpacing: 2,
+                                                fontFamily: 'Roboto Slab',
+                                            }
+                                        }}
+                                    />
+                                    <To
+                                        required
+                                        label="Required"
+                                        defaultValue="To: Email"
+                                        multiline
+                                        maxRows={2}
+                                        variant="standard"
                                         name='To'
 
-                                    inputProps={{
-                                        style: {
-                                            fontSize: 30,
-                                            lineHeight: 2,
-                                            letterSpacing: 2,
-                                            fontFamily: "Roboto Slab",
-                                        }
-                                    }}
-                                />
-                                <PrintDate>{(new Date().getMonth()) + '/' + (new Date().getDay()) + '/' + (new Date().getFullYear())}</PrintDate>
-                            </FromToWrap>
-                        </GridWrap>
-                    </ComponentsWrap>
-                    <div className='flex '>
-                        <button type='submit'>
-                            <ExportIcon />
-                        </button>
+                                        inputProps={{
+                                            style: {
+                                                fontSize: 30,
+                                                lineHeight: 2,
+                                                letterSpacing: 2,
+                                                fontFamily: "Roboto Slab",
+                                            }
+                                        }}
+                                    />
+                                    <PrintDate>{(new Date().getMonth()) + '/' + (new Date().getDay()) + '/' + (new Date().getFullYear())}</PrintDate>
+                                </FromToWrap>
+                            </GridWrap>
+                        </ComponentsWrap>
+                        <div className='flex justify-end'>
+                            <button type='submit'>
+                                <ExportIcon />
+                            </button>
                         </div>
-                </Form>
-            </PostcardWrap>
-        </Container>
-    </>
-)
+                    </Form>
+                </PostcardWrap>
+            </Container>
+        </>
+    )
 }
 
 export default Postcard

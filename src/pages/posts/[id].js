@@ -52,7 +52,7 @@ export default function Post({ content, from, to, gallery = false, array }) {
             {gallery ?
                 <PageTemplate>
                     <h1 className='text-center text-5xl my-10'>Gallery</h1>
-                    <div className='flex justify-center flex-wrap gap-10 mx-[10%] w-[80%]'>
+                    <div className='flex justify-center flex-wrap gap-10 mx-[10%] w-[80%] pb-10'>
 
                         {array.map((ele, index) => {
                             if (index == 0) {
