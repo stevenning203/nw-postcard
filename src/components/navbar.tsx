@@ -4,8 +4,8 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
-        <a href={props.href}>
-            <div className={props.className + " flex flex-row content-center p-5"}>
+        <a className='flex' href={props.href}>
+            <div className={props.className + " flex flex-col justify-center p-5"}>
                 <div>{props.children}</div>
             </div>
         </a>

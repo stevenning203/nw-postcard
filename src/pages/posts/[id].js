@@ -4,6 +4,8 @@ import Gallery from '../gallery';
 import TinyCard from '@/components/tinyCard';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import BigPostcard from '@/components/bigPostcard';
+import { boxSizing } from '@mui/system';
+import { useState } from 'react';
 
 export async function getServerSideProps({ query }) {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] })
@@ -51,6 +53,8 @@ export async function getServerSideProps({ query }) {
 
 export default function Post({ content, from, to, idto, idfrom, gallery = false, array }) {
     const { user, error, isLoading } = useUser();
+    const [box, setBox] = useState("inbox");
+
     if (user == undefined) {
         return <div>Loading, or you are not logged in!</div>
     }
