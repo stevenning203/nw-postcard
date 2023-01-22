@@ -39,6 +39,21 @@ height: 35px;
 export const CD = styled(CanvasDraw)`
 margin-left: 50%;
 margin-top: 10%;
+
+@media screen and (max-width: 900px){
+margin-left: 10%;
+margin-top: 40%;
+  }
+
+  @media screen and (max-width: 450px){
+    margin-left: -20%;
+    margin-top: 60%;
+  }
+
+  @media screen and (max-width: 400px){
+    margin-left: 0;
+    margin-top: 0;
+  }
 `
 export const UndoIcon = styled(ReplayIcon)`
 transform: scale(1.5);
@@ -107,8 +122,6 @@ height: auto;
 padding: 5%;
 padding-top:0;
 `
-export const ComponentsWrap = styled.div`
-`
 export const GridWrap = styled.div`
 display: flex;
 justify-content: center;
@@ -120,6 +133,10 @@ export const MessageWrap = styled.div`
 height: 100%;
 width: 50%;
 padding-top: 5%;
+
+@media screen and (max-width: 900px){
+  width: 50%;
+  }
 `
 export const Message = styled(TextField)`
 padding: 5%;
@@ -131,19 +148,41 @@ position: absolute;
 align-items: center;
 justify-content: center;
 margin-top: 3%;
+
+@media screen and (max-width: 450px){
+  border-left: none;
+  height: 1%;
+  width: 70%;
+  margin-top: 1%;
+  border-top: 3px solid black;
+}
 `
 export const FromToWrap = styled.div`
 width: 50%;
 height: 100%;
 margin-left: -5%;
 margin-top: -10%;
+
+@media screen and (max-width: 900px){
+  width: 50%;
+  }
+
+  @media screen and (max-width: 740px){
+    margin-top: -15%;
+  }
+  @media screen and (max-width: 400px){
+    margin-top: -45%;
+  }
 `
 export const From = styled(TextField)`
 margin-left: 15%;
-
+@media screen and (max-width: 740px){
+  margin-top: -15%;
+}
 `
 export const To = styled(TextField)`
 margin-left: 15%;
+
 `
 export const Flowers = styled.div`
 background: url('/flowers.png');
@@ -153,5 +192,9 @@ background-position: center;
 width:100%;
 height:100%;
 margin-top: -20%;
+
+@media screen and (max-width: 900px){
+  margin-top: -40%;
+    }
 `
 

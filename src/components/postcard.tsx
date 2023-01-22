@@ -1,4 +1,4 @@
-import { CD, Container, PostcardWrap, Form, PostCardTitle, ComponentsWrap, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
+import { CD, Container, PostcardWrap, Form, PostCardTitle, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
 import { useState } from "react";
 import classNames from 'classnames';
 import React from 'react';
@@ -145,7 +145,6 @@ const Postcard = () => {
                         e.preventDefault();
                         SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
                     }}>
-                        <ComponentsWrap>
                             <GridWrap>
                                 <MessageWrap>
                                     <Message
@@ -161,6 +160,8 @@ const Postcard = () => {
                                             style: {
                                                 fontSize: 40,
                                                 lineHeight: 2,
+                                                whiteSpace: 'pre-wrap', 
+                                                overflowWrap: 'break-word',
                                                 fontFamily: "Homemade Apple",
                                             }
                                         }}
@@ -189,6 +190,8 @@ const Postcard = () => {
                                                 fontSize: 30,
                                                 lineHeight: 2,
                                                 letterSpacing: 2,
+                                                whiteSpace: 'pre-wrap', 
+                                                overflowWrap: 'break-word',
                                                 fontFamily: 'Roboto Slab',
                                             }
                                         }}
@@ -213,7 +216,6 @@ const Postcard = () => {
                                     />
                                 </FromToWrap>
                             </GridWrap>
-                        </ComponentsWrap>
                         <div className='flex justify-end pt-10'>
                             <button type='submit'>
                                 <ExportIcon />
