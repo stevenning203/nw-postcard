@@ -7,6 +7,7 @@ import BigPostcard from '@/components/bigPostcard';
 import { boxSizing } from '@mui/system';
 import { useState } from 'react';
 import { CheckBoxWrapper, CheckBox, CheckBoxLabel } from './buttonElements'
+import { CenterFocusStrong } from '@mui/icons-material';
 
 export async function getServerSideProps({ query }) {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] })
@@ -86,16 +87,20 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                             textAlign: "center",
                             color: "#A94E4E"}}>Inbox</h2> }<br/>
                             <CheckBoxWrapper>
+
                         <CheckBox className='cursor-pointer' id="checkbox" type="checkbox" onClick={() => setBox(!box)} />
                             <CheckBoxLabel htmlFor="checkbox" />
                         </CheckBoxWrapper>
 
                     {box ? <div>
+
                         <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-[#426574]'>
+
                             {array.map((ele, index) => {
                                 if (ele[4] != user.nickname || index == 0) {
                                     return;
                                 }
+
 
                                 const [content, from, to, idfrom, idto, date, image, sticker] = ele;
 
