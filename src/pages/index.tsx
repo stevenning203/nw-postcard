@@ -13,7 +13,6 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
     const { user, error, isLoading } = useUser();
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
 
     return (
       <PageTemplate className='flex flex-row items-center min-h-screen bg-orange-100'>
