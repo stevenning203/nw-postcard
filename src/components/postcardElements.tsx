@@ -1,6 +1,48 @@
 import styled from 'styled-components'
 import TextField from '@mui/material/TextField';
+import CanvasDraw from "react-canvas-draw";
+import ReplayIcon from '@mui/icons-material/Replay';
+import CircleIcon from '@mui/icons-material/Circle';
+import ImageSearchIcon from '@mui/icons-material/ImageSearch';
+import WestIcon from '@mui/icons-material/West';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import IosShareIcon from '@mui/icons-material/IosShare';
 
+export const LeftArrowIcon = styled(WestIcon)`
+transform: scale(1.7);
+`
+export const SearchIcon = styled(ImageSearchIcon)`
+transform: scale(1.7);
+`
+export const AddIcon = styled(AddCircleOutlineIcon)`
+transform: scale(1.7);
+`
+export const ProfileIcon = styled(PersonOutlineIcon)`
+transform: scale(1.7);
+`
+export const ExportIcon = styled(IosShareIcon)`
+transform: scale(1.7);
+`
+export const CIcon = styled(CircleIcon)`
+transform: scale(1.2);
+&:hover{
+    cursor: url('/pen.png'), auto;
+  }
+`
+export const ButtonWrap = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+background: #EBE3D7;
+height: 35px;
+`
+export const CD = styled(CanvasDraw)`
+transform: scale(0.5, 0.7);
+`
+export const UndoIcon = styled(ReplayIcon)`
+transform: scale(1.5);
+`
 export const Container = styled.div`
 display: flex;
 align-items: center;
@@ -39,13 +81,7 @@ export const ImgWrap = styled.div`
 height: 60%;
 `
 export const Stamp = styled.div`
-background: url('/lion.png');
-background-position: center;
-height:100%;
-height: 100%;
-background-repeat: no-repeat;
-background-size: auto 100%;
-margin-left: 50%;
+margin-left: 20%;
 `
 export const PostageOverlay = styled.div`
 background: url('/post.png');
@@ -101,15 +137,23 @@ margin-top: 3%;
 export const FromToWrap = styled.div`
 width: 50%;
 height: 100%;
+margin-left: -5%;
+margin-top: -10%;
+
 `
 export const From = styled(TextField)`
+margin-left: 15%;
+
 `
 export const To = styled(TextField)`
+margin-left: 15%;
+
 `
 export const PrintDate = styled.p`
 font-family: 'Roboto Slab';
 font-type: bold;
 font-size: 30px;
+margin-left: 15%;
 `
 export const Flowers = styled.div`
 background: url('/flowers.png');
@@ -118,6 +162,6 @@ background-size: 100%;
 background-position: center;
 width:100%;
 height:100%;
-margin-top: -10%;
+margin-top: -55%;
 `
 
