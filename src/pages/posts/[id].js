@@ -13,7 +13,7 @@ export async function getServerSideProps({ query }) {
     const sheets = google.sheets({ version: "v4", auth });
 
     const { id } = query
-    const range = "Sheet1!A:E";
+    const range = "Sheet1!A:G";
 
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.SHEET_ID,
@@ -38,7 +38,7 @@ export async function getServerSideProps({ query }) {
         }
     }
 
-    const [content, from, to, idfrom, idto] = response.data.values[id];
+    const [content, from, to, idfrom, idto, date, image] = response.data.values[id];
 
     return {
         props: {
@@ -47,6 +47,8 @@ export async function getServerSideProps({ query }) {
             to: to,
             idto: idto,
             idfrom: idfrom,
+            date: date,
+            image: image,
         }
     }
 }
@@ -68,26 +70,24 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                     {box ? <div><h2 className='text-center text-3xl my-10'>Sent</h2>
                         <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
                         {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
-                            const [content, from, to] = ele;
+                            const [content, from, to, idfrom, idto, date, image] = ele;
 
                             return (
                                 <div key={index}>
-                                    <TinyCard content={content} from={from} to={to} id={index} />
+                                    <TinyCard content={content} from={from} to={to} id={index} image={image}/>
                                 </div>
                             )
                         })}
                         </div></div> : <div><h2 className='text-center text-3xl my-10'>Inbox</h2>
                     <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-sky-300 p-10 rounded-lg'>
-                        {array.map((ele, index) => {
-                            console.log(ele + user.nickname);
-
+                                {array.map((ele, index) => {
                             if (ele[3] != user.nickname || index == 0) {
                                 return;
                             }
-                            const [content, from, to] = ele;
+                            const [content, from, to, idfrom, idto, date, image] = ele;
                             return (
                                 <div>
-                                    <TinyCard content={content} from={from} to={to} id={index} />
+                                    <TinyCard content={content} from={from} to={to} id={index} image={image}/>
                                 </div>
                             )
                         })}
