@@ -28,7 +28,7 @@ const Postcard = () => {
  * 
  * @param post_card the post card to submit
  */
-    function SubmitPostCard(event: any, f: HTMLFormElement): void {
+    function SubmitPostCard(event: any, f: HTMLFormElement, imageData: string): void {
 
 
         if (isLoading) {
@@ -58,6 +58,7 @@ const Postcard = () => {
         const froom: string = frm.toString();
         data.append("IDFROM", uid);
         data.append("IDTO", froom.slice(0, froom.indexOf('@')));
+        data.append("Image", imageData);
         fetch(url, {
             method: 'POST',
             body: data,
@@ -147,7 +148,7 @@ const Postcard = () => {
                     <PostCardTitle>POSTCARD</PostCardTitle>
                     <Form ref={ref} onSubmit={(e) => {
                         e.preventDefault();
-                        SubmitPostCard(e, document.forms[0]);
+                        SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
                     }}>
                         <ComponentsWrap>
                             <GridWrap>
