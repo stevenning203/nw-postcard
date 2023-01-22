@@ -7,6 +7,7 @@ import BigPostcard from '@/components/bigPostcard';
 import { boxSizing } from '@mui/system';
 import { useState } from 'react';
 import { CheckBoxWrapper, CheckBox, CheckBoxLabel } from './buttonElements'
+import { CenterFocusStrong } from '@mui/icons-material';
 
 export async function getServerSideProps({ query }) {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] })
@@ -65,19 +66,41 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
     return (
         <div>
             {gallery ?
-                <PageTemplate>
-                    <h1 className='text-center text-5xl my-10'>Gallery</h1>{box ? <h2 className='text-center text-3xl my-5'>Sent</h2> :<h2 className='text-center text-3xl my-5'>Inbox</h2> }
-                    <CheckBoxWrapper>
+                <PageTemplate className='min-h-screen bg-orange-100'>
+                <br/><br/>
+                <h1 style={{fontFamily: 'Roboto Slab',
+                            fontWeight: 4000,
+                            fontStyle: "bold",
+                            fontSize: 50,
+                            textAlign: "center",
+                            color: "#426574"}}>
+                Gallery</h1>
+                {box ? <h2 style={{fontFamily: 'Roboto Slab',
+                            fontWeight: 4000,
+                            fontStyle: "bold",
+                            fontSize: 30,
+                            textAlign: "center",
+                            color: "#426574"}}>Sent</h2> :<h2 style={{fontFamily: 'Roboto Slab',
+                            fontWeight: 4000,
+                            fontStyle: "bold",
+                            fontSize: 30,
+                            textAlign: "center",
+                            color: "#A94E4E"}}>Inbox</h2> }<br/>
+                            <CheckBoxWrapper>
+
                         <CheckBox className='cursor-pointer' id="checkbox" type="checkbox" onClick={() => setBox(!box)} />
                             <CheckBoxLabel htmlFor="checkbox" />
                         </CheckBoxWrapper>
 
                     {box ? <div>
-                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
+
+                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-[#426574]'>
+
                             {array.map((ele, index) => {
                                 if (ele[4] != user.nickname || index == 0) {
                                     return;
                                 }
+
 
                                 const [content, from, to, idfrom, idto, date, image, sticker] = ele;
 
@@ -88,7 +111,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                                 )
                             })}
                         </div></div> : <div>
-                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-sky-300 p-10 rounded-lg'>
+                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-[#A94E4E] p-10 rounded-lg'>
                             {array.map((ele, index) => {
                                 if (ele[3] != user.nickname || index == 0) {
                                     return;

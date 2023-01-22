@@ -46,3 +46,13 @@ export const CheckBox = styled.input`
     }
   }
 `
+
+export const GalleryTitle = styled.p`
+  font-family: 'Roboto Slab';
+  font-weight: 4000;
+  font-type: bold;
+  letter-spacing: 3px;
+  font-size: 3rem;
+  color: #426574;'
+`
+  
