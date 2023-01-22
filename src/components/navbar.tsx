@@ -1,7 +1,5 @@
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import {SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CIcon } from './navbarElements'
 
 
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
