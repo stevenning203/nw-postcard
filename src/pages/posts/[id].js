@@ -60,7 +60,6 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
             {gallery ?
                 <PageTemplate>
                     <h1 className='text-center text-5xl my-10'>Gallery</h1>
-                    <div className='flex justify-center flex-wrap gap-10 mx-[10%] w-[80%] pb-10'>
                     <h2 className='text-center text-3xl my-10'>Sent</h2>
                     <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
                         {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
