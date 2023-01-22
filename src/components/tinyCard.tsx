@@ -1,6 +1,7 @@
 import { PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers } from './tinyCardElements'
 import React, { useEffect } from 'react'
 import classNames from 'classnames';
+import lzString from "lz-string";
 import {useRef, useState } from 'react'
 import CanvasDraw from "react-canvas-draw";
 
@@ -28,7 +29,7 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
     };
 
     useEffect(() => {
-        canvasRef.current.loadSaveData(props.image, false);
+        canvasRef.current.loadSaveData(lzString.decompressFromUTF16(props.image), false);
     })
 
     return (

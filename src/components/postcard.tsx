@@ -4,31 +4,13 @@ import classNames from 'classnames';
 import SubmitPostCard from '@/logic/submit';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Swal from 'sweetalert2';
-
-
-
-
-
-
-
-
-
-
-
 import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-
-
-
-
-
-
-
+import lzString from "lz-string";
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
         <a href={props.href}>
@@ -209,7 +191,6 @@ const Postcard = () => {
             <Container>
                 <PostcardWrap>
                     <PostCardTitle>POSTCARD</PostCardTitle>
-                   
                             <GridWrap>
                                 <MessageWrap>
           <img className='w-16 h-16 mt-[-25%]' src={sticker} alt="" />
