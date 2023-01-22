@@ -137,6 +137,7 @@ const Postcard = () => {
                 setMessage('Insert your own special message here!');
                 setFrom('From: sender');
                 setTo('To: Email');
+                canvasRef.current.clear();
                     }}>
             <nav className='bg-[#EBE3D7] items-center flex'>
                 <NavbarElement className='items-center' href='/'>

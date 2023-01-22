@@ -33,7 +33,6 @@ const BigPostcard = (props: { content: string, from: string, to: string, image: 
                             defaultValue={props.to}
                             disabled
                             />
-                            <PrintDate>{(new Date().getMonth()) + '/' + (new Date().getDay()) + '/' + (new Date().getFullYear())}</PrintDate>
                         </FromToWrap>
                     </GridWrap>
                 </Form>

@@ -103,13 +103,6 @@ line-height: 1;
 letter-spacing: 2;
 resize: none;
 font-family: "Roboto Slab";
-// margin-top: -5px;
-`
-export const PrintDate = styled.p`
-font-family: 'Roboto Slab';
-font-type: bold;
-font-size: 30px;
-padding-bottom: 20px;
 `
 export const Flowers = styled.div`
 background: url('/flowers.png');
