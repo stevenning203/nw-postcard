@@ -220,9 +220,11 @@ const Postcard = () => {
                             </FromToWrap>
                         </GridWrap>
                     </ComponentsWrap>
+                    <div className='flex '>
                         <button type='submit'>
                             <ExportIcon />
                         </button>
+                        </div>
                 </Form>
             </PostcardWrap>
         </Container>
