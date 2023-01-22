@@ -34,18 +34,19 @@ export async function getServerSideProps({ query }) {
         }
     }
 
-    const [content, from, to] = response.data.values[id];
+    const [content, from, to, uniqueID] = response.data.values[id];
 
     return {
         props: {
             content: content,
             from: from,
-            to: to
+            to: to,
+            uniqueID: uniqueID,
         }
     }
 }
 
-export default function Post({ content, from, to, gallery = false, array }) {
+export default function Post({ content, from, to, uniqueID, gallery = false, array }) {
     return (
         <div>
             {gallery ?
