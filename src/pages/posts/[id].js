@@ -38,7 +38,6 @@ export async function getServerSideProps({ query }) {
             }
         }
     }
-
     const [content, from, to, idfrom, idto, date, image, sticker] = response.data.values[id];
 
     return {
@@ -75,11 +74,15 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
 
                     {box ? <div>
                         <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
-                            {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
+                            {array.map((ele, index) => {
+                                if (ele[3] != user.nickname || index == 0) {
+                                    return;
+                                }
+
                                 const [content, from, to, idfrom, idto, date, image, sticker] = ele;
 
                                 return (
-                                    <a href={"/posts/" + (index + 1)}>
+                                    <a href={"/posts/" + index}>
                                         <TinyCard content={content} from={from} to={to} id={index} image={image} sticker={"../" + sticker} />
                                     </a>
                                 )
@@ -92,7 +95,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                                 }
                                 const [content, from, to, idfrom, idto, date, image, sticker] = ele;
                                 return (
-                                    <a href={"/posts/" + (index + 1)}>
+                                    <a href={"/posts/" + index}>
                                         <TinyCard content={content} from={from} to={to} id={index} image={image} sticker={"../" + sticker} />
                                     </a>
                                 )
