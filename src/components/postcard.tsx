@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import React from 'react';
 import SubmitPostCard from '@/logic/submit';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Swal from 'sweetalert2'
 
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
@@ -71,7 +72,11 @@ const Postcard = () => {
             body: data,
         })
             .then(() => {
-                alert("Success!");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Your postcard was sent!'
+                  })
             })
     }
 
