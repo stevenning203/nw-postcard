@@ -80,9 +80,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                         })}
                         </div></div> : <div><h2 className='text-center text-3xl my-10'>Inbox</h2>
                     <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-sky-300 p-10 rounded-lg'>
-                        {array.map((ele, index) => {
-                            console.log(ele + user.nickname);
-
+                                {array.map((ele, index) => {
                             if (ele[3] != user.nickname || index == 0) {
                                 return;
                             }
