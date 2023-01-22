@@ -1,7 +1,7 @@
 import React from 'react'
 import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers } from './tinyCardElements'
 
-const TinyCard = (props: {content:string, from:string, to:string}) => {
+const TinyCard = (props: {content:string, from:string, to:string, index:number }) => {
     return (
         <>
             <PostcardWrap>
