@@ -24,6 +24,9 @@ function NavbarElement(props: { className?: string, children: React.ReactNode, h
 
 const Postcard = () => {
     const { user, error, isLoading } = useUser();
+    const [message, setMessage] = useState('Insert your own special message here!');
+  const [from, setFrom] = useState('From: sender');
+  const [to, setTo] = useState('To: recepient');
 
     /**
  * This function should:
@@ -131,6 +134,9 @@ const Postcard = () => {
          <Form ref={ref} onSubmit={(e) => {
                         e.preventDefault();
                 SubmitPostCard(e, document.forms[0], lzString.compressToUTF16(canvasRef.current.getSaveData()));
+                setMessage('Insert your own special message here!');
+                setFrom('From: sender');
+                setTo('To: Email');
                     }}>
             <nav className='bg-[#EBE3D7] items-center flex'>
                 <NavbarElement className='items-center' href='/'>
@@ -150,12 +156,12 @@ const Postcard = () => {
                         onChangeComplete={(c: { hex: React.SetStateAction<string>; }) => setBrushColor(c.hex)}
                     />
 <div className='flex justify-center pr-5 align-center'>
-                    <UndoIcon onClick={() => {
+                    <UndoIcon className='hover:fill-[#134b5f] cursor-pointer' onClick={() => {
                         canvasRef.current.undo();
                     }} />
                     </div>
 <div className='flex justify-center pr-5 align-center'>
-<TrashIcon onClick={() => {
+<TrashIcon className='hover:fill-[#134b5f] cursor-pointer' onClick={() => {
                         canvasRef.current.clear();
                     }} />
                     </div>
@@ -188,7 +194,7 @@ const Postcard = () => {
                 
         <div className='flex justify-center pr-5 align-center'>
                             <button type='submit'>
-                                <ExportIcon />
+                                <ExportIcon className='hover:fill-[#134b5f]' />
                             </button>
                         </div>
 
@@ -210,6 +216,9 @@ const Postcard = () => {
                                         maxRows={3}
                                         variant="standard"
                                         name="Content"
+
+                                        onChange={event => setMessage(event.target.value)}
+                                        value={message}
 
                                         inputProps={{
                                             style: {
@@ -239,6 +248,8 @@ const Postcard = () => {
                                         maxRows={2}
                                         variant="standard"
                                         name='From'
+                                        onChange={event => setFrom(event.target.value)}
+                                        value={from}
 
                                         inputProps={{
                                             style: {
@@ -259,6 +270,8 @@ const Postcard = () => {
                                         maxRows={2}
                                         variant="standard"
                                         name='To'
+                                        onChange={event => setTo(event.target.value)}
+                                        value={to}
 
                                         inputProps={{
                                             style: {
