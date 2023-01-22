@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import TextField from '@mui/material/TextField';
 import CanvasDraw from "react-canvas-draw";
 import ReplayIcon from '@mui/icons-material/Replay';
-import CircleIcon from '@mui/icons-material/Circle';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import WestIcon from '@mui/icons-material/West';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import IosShareIcon from '@mui/icons-material/IosShare';
+import { CirclePicker } from "react-color";
 
 export const LeftArrowIcon = styled(WestIcon)`
 transform: scale(1.7);
@@ -24,8 +24,7 @@ transform: scale(1.7);
 export const ExportIcon = styled(IosShareIcon)`
 transform: scale(1.7);
 `
-export const CIcon = styled(CircleIcon)`
-transform: scale(1.2);
+export const CPick = styled(CirclePicker)`
 &:hover{
     cursor: url('/pen.png'), auto;
   }
