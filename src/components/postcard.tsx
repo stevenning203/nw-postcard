@@ -146,6 +146,10 @@ const Postcard = () => {
 
     return (
         <>
+         <Form ref={ref} onSubmit={(e) => {
+                        e.preventDefault();
+                        SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
+                    }}>
             <nav className='bg-[#EBE3D7] items-center flex'>
                 <NavbarElement className='items-center' href='/'>
                     <LeftArrowIcon />
@@ -169,10 +173,8 @@ const Postcard = () => {
                     }} />
 
 
-        <InputLabel id="demo-simple-select-helper-label" />
+        <InputLabel />
         <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
           value={sticker}
           label="stickers"
           name='Sticker'
@@ -189,12 +191,17 @@ const Postcard = () => {
           </MenuItem>
         </Select>
 
-        
-
                     <NavbarElement className='items-center' href='/'>
                         <ProfileIcon />
                     </NavbarElement>
                 </div>
+
+                
+        <div className='flex justify-center pr-5 align-center'>
+                            <button type='submit'>
+                                <ExportIcon />
+                            </button>
+                        </div>
 
                 <div className='ml-auto pr-5'></div>
             </nav >
@@ -202,10 +209,7 @@ const Postcard = () => {
             <Container>
                 <PostcardWrap>
                     <PostCardTitle>POSTCARD</PostCardTitle>
-                    <Form ref={ref} onSubmit={(e) => {
-                        e.preventDefault();
-                        SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
-                    }}>
+                   
                             <GridWrap>
                                 <MessageWrap>
           <img className='w-16 h-16 mt-[-25%]' src={sticker} alt="" />
@@ -279,14 +283,11 @@ const Postcard = () => {
                                     />
                                 </FromToWrap>
                             </GridWrap>
-                        <div className='flex justify-end pt-10'>
-                            <button type='submit'>
-                                <ExportIcon />
-                            </button>
-                        </div>
-                    </Form>
+                        
+                    
                 </PostcardWrap>
             </Container>
+            </Form>
         </>
     )
 }

@@ -117,9 +117,8 @@ color: #426574;
 export const Form = styled.form`
 display: flex;
 flex-direction: column;
-width: 100%;
+width: 100vw;
 height: auto;
-padding: 5%;
 padding-top:0;
 `
 export const GridWrap = styled.div`
@@ -132,6 +131,7 @@ gap: 10%;
 export const MessageWrap = styled.div`
 height: 100%;
 width: 50%;
+padding-left: 5%;
 padding-top: 5%;
 
 @media screen and (max-width: 900px){
@@ -160,7 +160,7 @@ margin-top: 3%;
 export const FromToWrap = styled.div`
 width: 50%;
 height: 100%;
-margin-left: -5%;
+margin-left: -10%;
 margin-top: -10%;
 
 @media screen and (max-width: 900px){
@@ -191,10 +191,11 @@ background-size: 100%;
 background-position: center;
 width:100%;
 height:100%;
-margin-top: -20%;
+margin-top: -30%;
+margin-left: -5%;
 
 @media screen and (max-width: 900px){
-  margin-top: -40%;
+  margin-top: -60%;
     }
 `
 
