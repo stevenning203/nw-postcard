@@ -1,9 +1,8 @@
+import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers } from './tinyCardElements'
 import React, { useEffect } from 'react'
 import classNames from 'classnames';
 import {useRef, useState } from 'react'
 import CanvasDraw from "react-canvas-draw";
-
-import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers } from './tinyCardElements'
 
 const TinyCard = (props: {content:string, from:string, to:string, index:number, image:string }) => {
     const [brushColor, setBrushColor] = useState("black");  
@@ -55,7 +54,6 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
                             defaultValue={props.to}
                             disabled
                             />
-                            <PrintDate>{(new Date().getMonth()) + '/' + (new Date().getDay()) + '/' + (new Date().getFullYear())}</PrintDate>
                         </FromToWrap>
                     </GridWrap>
                 </Form>

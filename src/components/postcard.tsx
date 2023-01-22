@@ -1,4 +1,4 @@
-import { CD, Container, PostcardWrap, Form, PostCardTitle, ComponentsWrap, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
+import { CD, Container, PostcardWrap, Form, PostCardTitle, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
 import { useState } from "react";
 import classNames from 'classnames';
 import React from 'react';
@@ -15,6 +15,7 @@ function NavbarElement(props: { className?: string, children: React.ReactNode, h
         </a>
     )
 }
+
 
 const Postcard = () => {
     const { user, error, isLoading } = useUser();
@@ -105,9 +106,6 @@ const Postcard = () => {
         catenaryColor: brushColor,
     };
 
-
-
-
     return (
         <>
             <nav className='bg-[#EBE3D7] items-center flex'>
@@ -116,7 +114,7 @@ const Postcard = () => {
                 </NavbarElement>
 
                 <div className='flex flex-center items-center justify-center grow'>
-                    <NavbarElement className='items-center' href='/'>
+                    <NavbarElement className='items-center' href='/posts/0'>
                         <SearchIcon />
                     </NavbarElement>
                     <CPick
@@ -133,9 +131,6 @@ const Postcard = () => {
                     }} />
 
                     <NavbarElement className='items-center' href='/'>
-                        <AddIcon />
-                    </NavbarElement>
-                    <NavbarElement className='items-center' href='/'>
                         <ProfileIcon />
                     </NavbarElement>
                 </div>
@@ -150,7 +145,6 @@ const Postcard = () => {
                         e.preventDefault();
                         SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
                     }}>
-                        <ComponentsWrap>
                             <GridWrap>
                                 <MessageWrap>
                                     <Message
@@ -166,6 +160,8 @@ const Postcard = () => {
                                             style: {
                                                 fontSize: 40,
                                                 lineHeight: 2,
+                                                whiteSpace: 'pre-wrap', 
+                                                overflowWrap: 'break-word',
                                                 fontFamily: "Homemade Apple",
                                             }
                                         }}
@@ -179,7 +175,6 @@ const Postcard = () => {
                                         <Stamp>
                                             <CD {...props} />
                                         </Stamp>
-                                        {/* <PostageOverlay /> */}
                                     </ImgWrap>
                                     <From
                                         required
@@ -195,6 +190,8 @@ const Postcard = () => {
                                                 fontSize: 30,
                                                 lineHeight: 2,
                                                 letterSpacing: 2,
+                                                whiteSpace: 'pre-wrap', 
+                                                overflowWrap: 'break-word',
                                                 fontFamily: 'Roboto Slab',
                                             }
                                         }}
@@ -217,11 +214,9 @@ const Postcard = () => {
                                             }
                                         }}
                                     />
-                                    <PrintDate>{(new Date().getMonth()) + '/' + (new Date().getDay()) + '/' + (new Date().getFullYear())}</PrintDate>
                                 </FromToWrap>
                             </GridWrap>
-                        </ComponentsWrap>
-                        <div className='flex justify-end'>
+                        <div className='flex justify-end pt-10'>
                             <button type='submit'>
                                 <ExportIcon />
                             </button>
