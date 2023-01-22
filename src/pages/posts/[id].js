@@ -14,7 +14,7 @@ export async function getServerSideProps({ query }) {
     const sheets = google.sheets({ version: "v4", auth });
 
     const { id } = query
-    const range = "Sheet1!A:G";
+    const range = "Sheet1!A:H";
 
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.SHEET_ID,
@@ -39,7 +39,7 @@ export async function getServerSideProps({ query }) {
         }
     }
 
-    const [content, from, to, idfrom, idto, date, image] = response.data.values[id];
+    const [content, from, to, idfrom, idto, date, image, sticker] = response.data.values[id];
 
     return {
         props: {
@@ -50,11 +50,12 @@ export async function getServerSideProps({ query }) {
             idfrom: idfrom,
             date: date,
             image: image,
+            sticker: sticker,
         }
     }
 }
 
-export default function Post({ content, from, to, idto, idfrom, gallery = false, array, image }) {
+export default function Post({ content, from, to, idto, idfrom, gallery = false, array, image, sticker}) {
     const { user, error, isLoading } = useUser();
     const [box, setBox] = useState(true);
 
@@ -75,11 +76,11 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                     {box ? <div>
                         <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
                             {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
-                                const [content, from, to, idfrom, idto, date, image] = ele;
+                                const [content, from, to, idfrom, idto, date, image, sticker] = ele;
 
                                 return (
                                     <a href={"/posts/" + (index + 1)}>
-                                        <TinyCard content={content} from={from} to={to} id={index} image={image} />
+                                        <TinyCard content={content} from={from} to={to} id={index} image={image} sticker={"../" + sticker} />
                                     </a>
                                 )
                             })}
@@ -89,10 +90,10 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                                 if (ele[3] != user.nickname || index == 0) {
                                     return;
                                 }
-                                const [content, from, to, idfrom, idto, date, image] = ele;
+                                const [content, from, to, idfrom, idto, date, image, sticker] = ele;
                                 return (
                                     <a href={"/posts/" + (index + 1)}>
-                                        <TinyCard content={content} from={from} to={to} id={index} image={image} />
+                                        <TinyCard content={content} from={from} to={to} id={index} image={image} sticker={"../" + sticker} />
                                     </a>
                                 )
                             })}
@@ -103,7 +104,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                 <div>
                     <PageTemplate>
                         <div className='flex justify-center items-center mx-[10%] w-[80%] my-16'>
-                            <BigPostcard content={content} from={from} to={to} image={image} />
+                            <BigPostcard content={content} from={from} to={to} image={image} sticker={"../" + sticker} />
                         </div>
                     </PageTemplate>
                 </div>}
