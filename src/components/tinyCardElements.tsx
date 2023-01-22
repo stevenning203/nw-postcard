@@ -1,12 +1,5 @@
 import styled from 'styled-components'
-import TextField from '@mui/material/TextField';
 
-export const CD = styled.div`
-margin-left: 30%;
-height: 80px;
-width: 60px;
-background: #fff;
-`
 export const PostcardWrap = styled.div`
 display: flex;
 flex-direction: column;
@@ -88,6 +81,7 @@ height: 100%;
 display: flex;
 flex-direction: column;
 padding-left:10px;
+margin-top: -50px;
 `
 export const From = styled.textarea`
 font-size: 15px;
@@ -95,7 +89,6 @@ line-height: 1;
 letter-spacing: 2;
 font-family: "Roboto Slab";
 resize: none;
-padding-top: 10px;
 `
 export const To = styled.textarea`
 font-size: 15px;
@@ -112,5 +105,6 @@ background-size: 80%;
 background-position: center;
 width:100%;
 height:100%;
+margin-top: -30px;
 `
 
