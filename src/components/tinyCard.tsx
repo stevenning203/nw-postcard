@@ -1,7 +1,45 @@
 import React from 'react'
-import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers } from './tinyCardElements'
+import classNames from 'classnames';
+import {useRef, useState } from 'react'
+import CanvasDraw from "react-canvas-draw";
 
-const TinyCard = (props: {content:string, from:string, to:string, index:number }) => {
+import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers } from './tinyCardElements'
+const defaultProps = {
+    loadTimeOffset: 5,
+    lazyRadius: 0,
+    brushRadius: 3,
+    catenaryColor: "#0a0302",
+    hideGrid: true,
+    canvasWidth: 150,
+    canvasHeight: 200,
+};
+
+
+
+const TinyCard = (props: {content:string, from:string, to:string, index:number, image:string }) => {
+    const [brushColor, setBrushColor] = useState("black");  
+    const canvasRef = React.createRef();
+
+    const ref = React.useRef(null);
+    const colors = [
+        "white",
+        "grey",
+        "black",
+        "red",
+        "yellow",
+        "green",
+        "blue"
+    ];
+
+    const canvasProps = {
+        ...defaultProps,
+        className: classNames("canvas"),
+        brushColor,
+        ref: canvasRef,
+        catenaryColor: brushColor,
+        img: props.image,
+    };
+
     return (
         <>
             <PostcardWrap>
@@ -15,7 +53,7 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number }
                         <Divider />
                         <FromToWrap>
                                 <Stamp>
-                                    <CD />
+                                    <CD {...canvasProps}/>
                                 </Stamp>
                             <From
                                 defaultValue={props.from}
