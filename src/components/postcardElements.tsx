@@ -38,7 +38,8 @@ background: #EBE3D7;
 height: 35px;
 `
 export const CD = styled(CanvasDraw)`
-transform: scale(0.5, 0.7);
+margin-left: 50%;
+margin-top: 10%;
 `
 export const UndoIcon = styled(ReplayIcon)`
 transform: scale(1.5);
@@ -87,11 +88,9 @@ export const PostageOverlay = styled.div`
 background: url('/post.png');
 background-position: center;
 height:100%;
-height: 100%;
+width: 100%;
 background-repeat: no-repeat;
-background-size: 100% auto;
-margin-left: 50%;
-transform: translate(-50%, -80%);
+background-size: 50% auto;
 `
 export const PostCardTitle = styled.p`
 font-family: 'Roboto Slab';
@@ -162,6 +161,6 @@ background-size: 100%;
 background-position: center;
 width:100%;
 height:100%;
-margin-top: -55%;
+margin-top: -20%;
 `
 

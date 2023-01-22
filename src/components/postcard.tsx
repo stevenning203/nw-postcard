@@ -30,8 +30,8 @@ const Postcard = () => {
     brushRadius: 3,
     catenaryColor: "#0a0302",
     hideGrid: true,
-    canvasWidth: 400,
-    canvasHeight: 400,
+    canvasWidth: 150,
+    canvasHeight: 200,
   };
 
   const colors = [
@@ -128,7 +128,7 @@ const Postcard = () => {
                     <Stamp>
                       <CD {...props} />
                     </Stamp>
-                    <PostageOverlay />
+                    {/* <PostageOverlay /> */}
                   </ImgWrap>
                   <From
                     required
