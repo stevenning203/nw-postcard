@@ -18,7 +18,7 @@ export default function Home() {
     return (
       <PageTemplate className='flex flex-row items-center min-h-screen bg-orange-100'>
           <div className='text-center mx-auto'>
-                {user && <h1 className='text-teal-700 font-bold text-2xl'> Welcome back {user.name}!</h1>}
+                {user && <h1 className='text-teal-700 font-bold text-3xl'> Hello {user.name}!</h1>}
             <br/>
                       <TextWrap1>
         <ReactCurvedText width='517'
