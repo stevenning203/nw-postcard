@@ -52,7 +52,7 @@ export async function getServerSideProps({ query }) {
 export default function Post({ content, from, to, idto, idfrom, gallery = false, array }) {
     const { user, error, isLoading } = useUser();
     if (user == undefined) {
-        return <div>Loading</div>
+        return <div>Loading, or you are not logged in!</div>
     }
 
     return (
@@ -62,13 +62,11 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                     <h1 className='text-center text-5xl my-10'>Gallery</h1>
                     <h2 className='text-center text-3xl my-10'>Sent</h2>
                     <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
-                        {array.filter((ele) => { return ele[4] == user.nickname; }).map((ele, index) => {
-                            if (index == 0) {
-                                return <div></div>;
-                            }
+                        {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
                             const [content, from, to] = ele;
+
                             return (
-                                <div>
+                                <div key={index}>
                                     <TinyCard content={content} from={from} to={to} id={index} />
                                 </div>
                             )
@@ -76,15 +74,16 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                     </div>
                     <h2 className='text-center text-3xl my-10'>Inbox</h2>
                     <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-sky-300 p-10 rounded-lg'>
-                        {array.filter((ele) => { return ele[3] == user.nickname }).map((ele, index) => {
-                            if (index == 0) {
+                        {array.map((ele, index) => {
+                            console.log(ele + user.nickname);
+
+                            if (ele[3] != user.nickname || index == 0) {
                                 return;
                             }
                             const [content, from, to] = ele;
                             return (
                                 <div>
                                     <TinyCard content={content} from={from} to={to} id={index} />
-                                    {ele.idto}
                                 </div>
                             )
                         })}
