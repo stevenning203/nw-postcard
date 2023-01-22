@@ -130,7 +130,7 @@ const Postcard = () => {
         <>
          <Form ref={ref} onSubmit={(e) => {
                         e.preventDefault();
-                        SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
+                SubmitPostCard(e, document.forms[0], lzString.compressToUTF16(canvasRef.current.getSaveData()));
                     }}>
             <nav className='bg-[#EBE3D7] items-center flex'>
                 <NavbarElement className='items-center' href='/'>
