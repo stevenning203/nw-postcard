@@ -5,7 +5,7 @@ import React from 'react';
 import SubmitPostCard from '@/logic/submit';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Swal from 'sweetalert2'
-
+import lzString from "lz-string";
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
         <a href={props.href}>
@@ -148,7 +148,7 @@ const Postcard = () => {
                     <PostCardTitle>POSTCARD</PostCardTitle>
                     <Form ref={ref} onSubmit={(e) => {
                         e.preventDefault();
-                        SubmitPostCard(e, document.forms[0], canvasRef.current.getSaveData());
+                        SubmitPostCard(e, document.forms[0], lzString.compressToUTF16(canvasRef.current.getSaveData()));
                     }}>
                         <ComponentsWrap>
                             <GridWrap>
