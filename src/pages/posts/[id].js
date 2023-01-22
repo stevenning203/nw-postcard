@@ -6,6 +6,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import BigPostcard from '@/components/bigPostcard';
 import { boxSizing } from '@mui/system';
 import { useState } from 'react';
+import { CheckBoxWrapper, CheckBox, CheckBoxLabel } from './buttonElements'
 
 export async function getServerSideProps({ query }) {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] })
@@ -62,35 +63,39 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
     }
 
     return (
-<div>
+        <div>
             {gallery ?
                 <PageTemplate>
-                    <h1 className='text-center text-5xl my-10'>Gallery</h1>
-                    <input type='checkbox' onClick={() => setBox(!box)} />
-                    {box ? <div><h2 className='text-center text-3xl my-10'>Sent</h2>
-                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
-                        {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
-                            const [content, from, to, idfrom, idto, date, image] = ele;
+                    <h1 className='text-center text-5xl my-10'>Gallery</h1>{box ? <h2 className='text-center text-3xl my-5'>Sent</h2> :<h2 className='text-center text-3xl my-5'>Inbox</h2> }
+                    <CheckBoxWrapper>
+                            <CheckBox id="checkbox" type="checkbox" onClick={() => setBox(!box)} />
+                            <CheckBoxLabel htmlFor="checkbox" />
+                        </CheckBoxWrapper>
 
-                            return (
-                                <div key={index}>
-                                    <TinyCard content={content} from={from} to={to} id={index} image={image}/>
-                                </div>
-                            )
-                        })}
-                        </div></div> : <div><h2 className='text-center text-3xl my-10'>Inbox</h2>
-                    <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-sky-300 p-10 rounded-lg'>
-                                {array.map((ele, index) => {
-                            if (ele[3] != user.nickname || index == 0) {
-                                return;
-                            }
-                            const [content, from, to, idfrom, idto, date, image] = ele;
-                            return (
-                                <div>
-                                    <TinyCard content={content} from={from} to={to} id={index} image={image}/>
-                                </div>
-                            )
-                        })}
+                    {box ? <div>
+                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
+                            {array.filter((ele, index) => { return ele[4] == user.nickname && index != 0 }).map((ele, index) => {
+                                const [content, from, to, idfrom, idto, date, image] = ele;
+
+                                return (
+                                    <div key={index}>
+                                        <TinyCard content={content} from={from} to={to} id={index} image={image} />
+                                    </div>
+                                )
+                            })}
+                        </div></div> : <div>
+                        <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mx-[10%] w-[80%] mb-48 bg-sky-300 p-10 rounded-lg'>
+                            {array.map((ele, index) => {
+                                if (ele[3] != user.nickname || index == 0) {
+                                    return;
+                                }
+                                const [content, from, to, idfrom, idto, date, image] = ele;
+                                return (
+                                    <div>
+                                        <TinyCard content={content} from={from} to={to} id={index} image={image} />
+                                    </div>
+                                )
+                            })}
                         </div></div>}
 
 
@@ -98,8 +103,8 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                 <div>
                     <PageTemplate>
                         <div className='flex justify-center items-center mx-[10%] w-[80%] my-16'>
-                    <BigPostcard content={content} from={from} to={to} />
-                    </div>
+                            <BigPostcard content={content} from={from} to={to} />
+                        </div>
                     </PageTemplate>
                 </div>}
         </div>

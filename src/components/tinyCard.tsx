@@ -1,4 +1,4 @@
-import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers } from './tinyCardElements'
+import { PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers } from './tinyCardElements'
 import React, { useEffect } from 'react'
 import classNames from 'classnames';
 import {useRef, useState } from 'react'
@@ -19,7 +19,7 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
     ];
 
     const canvasProps = {
-        className: classNames("canvas", "scale-50"),
+        className: classNames("canvas", "scale-[35%]", "ml-[0%]"),
         brushColor,
         ref: canvasRef,
         catenaryColor: brushColor,
@@ -43,9 +43,7 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
                         </MessageWrap>
                         <Divider />
                         <FromToWrap>
-                                <Stamp>
                                 <CanvasDraw {...canvasProps} />
-                                </Stamp>
                             <From
                                 defaultValue={props.from}
                                 disabled
