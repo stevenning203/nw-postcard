@@ -36,17 +36,31 @@ border-image: repeating-linear-gradient(
   }
 `
 export const ImgWrap = styled.div`
-
+height: 60%;
 `
 export const Stamp = styled.div`
-
+background: url('/lion.png');
+background-position: center;
+height:100%;
+height: 100%;
+background-repeat: no-repeat;
+background-size: auto 100%;
+margin-left: 50%;
 `
 export const PostageOverlay = styled.div`
-
+background: url('/post.png');
+background-position: center;
+height:100%;
+height: 100%;
+background-repeat: no-repeat;
+background-size: 100% auto;
+margin-left: 50%;
+transform: translate(-50%, -80%);
 `
-export const PostCardTitle = styled.h1`
-font-family: 'Roboto Slab', serif;
-font-weight: 2000;
+export const PostCardTitle = styled.p`
+font-family: 'Roboto Slab';
+font-weight: 4000;
+font-type: bold;
 letter-spacing: 3px;
 font-size: 3rem;
 color: #426574;
@@ -57,6 +71,7 @@ flex-direction: column;
 width: 100%;
 height: auto;
 padding: 5%;
+padding-top:0;
 `
 export const ComponentsWrap = styled.div`
 `
@@ -68,39 +83,41 @@ width: 100%;
 gap: 10%;
 `
 export const MessageWrap = styled.div`
-background: blue;
 height: 100%;
-width: 40%;
-margin-top: -5%;
+width: 50%;
+padding-top: 5%;
 `
 export const Message = styled(TextField)`
 padding: 5%;
 `
 export const Divider = styled.div`
-border-left: 5px solid black;
-height: 100%;
+border-left: 4px solid black;
+height: 50%;
 position: absolute;
-left: 50%;
-margin-left: -3px;
-top: 0;
+align-items: center;
+justify-content: center;
+margin-top: 3%;
 `
 export const FromToWrap = styled.div`
-background: green;
-height: auto;
-width: 40%;
-align-self: flex-end;
-margin-top: 15%;
+width: 50%;
+height: 100%;
 `
 export const From = styled(TextField)`
-
 `
 export const To = styled(TextField)`
-
 `
-export const PrintDate = styled.h3`
-font-family: 'Roboto Slab', serif;
+export const PrintDate = styled.p`
+font-family: 'Roboto Slab';
+font-type: bold;
+font-size: 30px;
 `
 export const Flowers = styled.div`
-
+background: url('/flowers.png');
+background-repeat: no-repeat;
+background-size: 100%;
+background-position: center;
+width:100%;
+height:100%;
+margin-top: -10%;
 `
 
