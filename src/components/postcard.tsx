@@ -137,7 +137,7 @@ const Postcard = () => {
 
 
 
-    const [sticker, setSticker] = React.useState('');
+    const [sticker, setSticker] = React.useState('sparkle.gif');
 
     const handleChange = (event: SelectChangeEvent) => {
         setSticker(event.target.value);
@@ -183,11 +183,11 @@ const Postcard = () => {
           <MenuItem value="stars.gif" onChange={() => {}}>
           <img className='w-10' src={'stars.gif'} alt="" />
           </MenuItem>
-          <MenuItem value="flowerG.gif">
-          <img className='w-10' src={'flowerG.gif'} alt="" />
-          </MenuItem>
           <MenuItem value="hearts.gif">
           <img className='w-10' src={'hearts.gif'} alt="" />
+          </MenuItem>
+          <MenuItem value="sparkle.gif">
+          <img className='w-10' src={'sparkle.gif'} alt="" />
           </MenuItem>
         </Select>
 
