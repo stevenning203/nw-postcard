@@ -55,9 +55,9 @@ const Postcard = () => {
         const data = new FormData(f);
         const frm = data.get("To");
         if (frm == null) { return; }
-        const froom = frm;
+        const froom: string = frm.toString();
         data.append("IDFROM", uid);
-        data.append("IDTO", froom);
+        data.append("IDTO", froom.slice(0, froom.indexOf('@')));
         fetch(url, {
             method: 'POST',
             body: data,
