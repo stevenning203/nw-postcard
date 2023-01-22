@@ -1,4 +1,4 @@
-import { CD, Container, PostcardWrap, Form, PostCardTitle, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
+import { CD, Container, PostcardWrap, Form, PostCardTitle, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, ProfileIcon, ExportIcon, CPick, TrashIcon } from './postcardElements'
 import { useState } from "react";
 import classNames from 'classnames';
 import SubmitPostCard from '@/logic/submit';
@@ -149,10 +149,17 @@ const Postcard = () => {
                         circleSpacing={22}
                         onChangeComplete={(c: { hex: React.SetStateAction<string>; }) => setBrushColor(c.hex)}
                     />
-
+<div className='flex justify-center pr-5 align-center'>
                     <UndoIcon onClick={() => {
                         canvasRef.current.undo();
                     }} />
+                    </div>
+<div className='flex justify-center pr-5 align-center'>
+<TrashIcon onClick={() => {
+                        canvasRef.current.clear();
+                    }} />
+                    </div>
+
 
 
         <InputLabel />
