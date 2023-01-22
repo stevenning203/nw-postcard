@@ -1,5 +1,5 @@
 import React from 'react'
-import { CD, PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, PrintDate, Flowers } from './bigPostcardElements'
+import {PostcardWrap, Form, PostCardTitle, GridWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers } from './bigPostcardElements'
 import CanvasDraw from "react-canvas-draw";
 import { useRef, useEffect, useState } from 'react';
 import lzString from "lz-string";
@@ -12,12 +12,12 @@ const BigPostcard = (props: { content: string, from: string, to: string, image: 
     console.log(imgsrc)
 
     const canvasProps = {
-        className: classNames("canvas", "scale-[35%]", "ml-[0%]"),
+        className: classNames("canvas", "scale-[50%]", "ml-[0%]", "mt-[-40%]"),
         brushColor,
         ref: canvasRef,
         catenaryColor: brushColor,
-        canvasWidth: 150,
-        canvasHeight: 200,
+        canvasWidth: 350,
+        canvasHeight: 420,
     };
 
     useEffect(() => {
@@ -32,9 +32,9 @@ const BigPostcard = (props: { content: string, from: string, to: string, image: 
                     <GridWrap>
                         <MessageWrap>
                     
-                        {props.sticker && <img className='w-16 h-16 mt-[-25%]' src={imgsrc} alt="tiny sticker" />}
+                        {props.sticker && <img className='w-16 h-16 mt-[-20%]' src={imgsrc} alt="tiny sticker" />}
                             <Message>{props.content}</Message>
-                            <Flowers />
+                            <img className='scale-90 mb-[-1%]' src="/flowers.png" />
                         </MessageWrap>
                         <Divider />
                         <FromToWrap>
