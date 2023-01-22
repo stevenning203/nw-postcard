@@ -1,3 +1,5 @@
+import localforage from 'localforage'
+
 /**
  * a post card
  */
@@ -5,7 +7,6 @@ export class PostCard {
     private content: string;
     private to: string;
     private from: string;
-    private id: string;
 
     /**
      * Generate a post card
@@ -14,11 +15,10 @@ export class PostCard {
      * @param to 
      * @param from 
      */
-    public constructor(content: string, to: string, from: string, id: string) {
+    public constructor(content: string, to: string, from: string) {
         this.content = content;
         this.to = to;
         this.from = from;
-        this.id = id;
     }
 
     public GetContent(): string {
@@ -32,16 +32,14 @@ export class PostCard {
     public GetTo(): string {
         return this.to;
     }
-
-    public GetID(): string {
-        return this.id;
-    }
 }
 
 /**
  * Database class to store/read PostCards
  */
 export class Database {
+    private static array: PostCard[] = [];
+
     /**
      * Store the post card in the local database
      * 
@@ -50,24 +48,23 @@ export class Database {
      * @param pc the post card
      */
     public static StorePostCard(pc: PostCard): boolean {
-        return false;
-    }
-
-    /**
-     * Retreive a post card from local forage:
-     * 
-     * @param id id of the post card
-     */
-    public static RetrievePostCard(id: string): PostCard {
-        return new PostCard("", "", "", "id");
+        Database.array.push(pc);
+        localforage.setItem("data", Database.array);
+        return true;
     }
 
     /**
      * Get all post cards from localForage
      * 
-     * @returns all post cards
+     * @returns all post cards -- the array will be empty if there is an error.
      */
     public static RetrieveAllPostCards(): PostCard[] {
-        return [];
+        let x: PostCard[] = [];
+        localforage.getItem('data', function (err, value: PostCard[] | null) {
+            if (value != null) {
+                x = value;
+            }
+        });
+        return x;
     }
 }
