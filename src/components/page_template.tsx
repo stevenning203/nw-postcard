@@ -2,7 +2,7 @@ import Head from "next/head";
 import Footer from "./footer";
 import Navbar from "./navbar";
 
-export default function PageTemplate(props: { children: React.ReactNode, className: string }) {
+export default function PageTemplate(props: { children: React.ReactNode, className?: string }) {
     return (
         <div>
             <Head>
@@ -10,7 +10,6 @@ export default function PageTemplate(props: { children: React.ReactNode, classNa
             </Head>
             <Navbar />
             <div className={props.className}>
-                Hello
                 {props.children}
             </div>
             <Footer />
