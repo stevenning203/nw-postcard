@@ -137,6 +137,7 @@ const Postcard = () => {
                 setMessage('Insert your own special message here!');
                 setFrom('From: sender');
                 setTo('To: Email');
+                canvasRef.current.clear();
                     }}>
             <nav className='bg-[#EBE3D7] items-center flex'>
                 <NavbarElement className='items-center' href='/'>
@@ -245,7 +246,7 @@ const Postcard = () => {
                                         label="Required"
                                         defaultValue="From: sender"
                                         multiline
-                                        maxRows={2}
+                                        maxRows={1}
                                         variant="standard"
                                         name='From'
                                         onChange={event => setFrom(event.target.value)}
@@ -267,7 +268,7 @@ const Postcard = () => {
                                         label="Required"
                                         defaultValue="To: Email"
                                         multiline
-                                        maxRows={2}
+                                        maxRows={1}
                                         variant="standard"
                                         name='To'
                                         onChange={event => setTo(event.target.value)}
