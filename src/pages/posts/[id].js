@@ -54,7 +54,7 @@ export async function getServerSideProps({ query }) {
     }
 }
 
-export default function Post({ content, from, to, idto, idfrom, gallery = false, array }) {
+export default function Post({ content, from, to, idto, idfrom, gallery = false, array, image }) {
     const { user, error, isLoading } = useUser();
     const [box, setBox] = useState(true);
 
@@ -103,7 +103,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                 <div>
                     <PageTemplate>
                         <div className='flex justify-center items-center mx-[10%] w-[80%] my-16'>
-                            <BigPostcard content={content} from={from} to={to} />
+                            <BigPostcard content={content} from={from} to={to} image={image} />
                         </div>
                     </PageTemplate>
                 </div>}
