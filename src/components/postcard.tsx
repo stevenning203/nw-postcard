@@ -246,7 +246,7 @@ const Postcard = () => {
                                         label="Required"
                                         defaultValue="From: sender"
                                         multiline
-                                        maxRows={2}
+                                        maxRows={1}
                                         variant="standard"
                                         name='From'
                                         onChange={event => setFrom(event.target.value)}
@@ -268,7 +268,7 @@ const Postcard = () => {
                                         label="Required"
                                         defaultValue="To: Email"
                                         multiline
-                                        maxRows={2}
+                                        maxRows={1}
                                         variant="standard"
                                         name='To'
                                         onChange={event => setTo(event.target.value)}
