@@ -5,10 +5,14 @@ import ReplayIcon from '@mui/icons-material/Replay';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import WestIcon from '@mui/icons-material/West';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import SendIcon from '@mui/icons-material/Send';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import IosShareIcon from '@mui/icons-material/IosShare';
 import { CirclePicker } from "react-color";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
+export const TrashIcon = styled(DeleteOutlineIcon)`
+transform: scale(1.7);
+`
 export const LeftArrowIcon = styled(WestIcon)`
 transform: scale(1.7);
 `
@@ -21,7 +25,7 @@ transform: scale(1.7);
 export const ProfileIcon = styled(PersonOutlineIcon)`
 transform: scale(1.7);
 `
-export const ExportIcon = styled(IosShareIcon)`
+export const ExportIcon = styled(SendIcon)`
 transform: scale(1.7);
 `
 export const CPick = styled(CirclePicker)`

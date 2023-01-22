@@ -69,7 +69,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                 <PageTemplate>
                     <h1 className='text-center text-5xl my-10'>Gallery</h1>{box ? <h2 className='text-center text-3xl my-5'>Sent</h2> :<h2 className='text-center text-3xl my-5'>Inbox</h2> }
                     <CheckBoxWrapper>
-                            <CheckBox id="checkbox" type="checkbox" onClick={() => setBox(!box)} />
+                        <CheckBox className='cursor-pointer' id="checkbox" type="checkbox" onClick={() => setBox(!box)} />
                             <CheckBoxLabel htmlFor="checkbox" />
                         </CheckBoxWrapper>
 
