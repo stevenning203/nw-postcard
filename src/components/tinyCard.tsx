@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classNames from 'classnames';
 import {useRef, useState } from 'react'
 import CanvasDraw from "react-canvas-draw";
@@ -10,15 +10,15 @@ const defaultProps = {
     brushRadius: 3,
     catenaryColor: "#0a0302",
     hideGrid: true,
-    canvasWidth: 150,
-    canvasHeight: 200,
+    canvasWidth: 60,
+    canvasHeight: 80,
 };
 
 
 
 const TinyCard = (props: {content:string, from:string, to:string, index:number, image:string }) => {
     const [brushColor, setBrushColor] = useState("black");  
-    const canvasRef = React.createRef();
+    const canvasRef = useRef<CanvasDraw>(null);
 
     const ref = React.useRef(null);
     const colors = [
@@ -40,6 +40,10 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
         img: props.image,
     };
 
+    useEffect(() => {
+        canvasRef.current.loadSaveData(props.image, false);
+    })
+
     return (
         <>
             <PostcardWrap>
@@ -53,7 +57,7 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
                         <Divider />
                         <FromToWrap>
                                 <Stamp>
-                                    <CD {...canvasProps}/>
+                                <CanvasDraw {...canvasProps} />
                                 </Stamp>
                             <From
                                 defaultValue={props.from}
