@@ -155,7 +155,7 @@ const Postcard = () => {
                                 <To
                                     required
                                     label="Required"
-                                    defaultValue="To: Recipient"
+                                    defaultValue="To: Email"
                                     multiline
                                     maxRows={2}
                                     variant="standard"

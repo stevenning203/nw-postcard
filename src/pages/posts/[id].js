@@ -1,8 +1,8 @@
 import PageTemplate from '@/components/page_template';
 import { google } from 'googleapis'
 import Gallery from '../gallery';
-import MiniPostcard from '@/components/mini_postcard';
 import TinyCard from '@/components/tinyCard';
+import BigPostcard from '@/components/bigPostcard';
 
 export async function getServerSideProps({ query }) {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] })
@@ -53,21 +53,24 @@ export default function Post({ content, from, to, gallery = false, array }) {
                 <PageTemplate>
                     <h1 className='text-center text-5xl my-10'>Gallery</h1>
                     <div className='flex justify-center flex-wrap gap-10 mx-[10%] w-[80%]'>
+
                         {array.map((ele, index) => {
                             if (index == 0) {
                                 return;
                             }
                             const [content, from, to] = ele;
                             return (
-                    <TinyCard content={content} from={from} to={to} id={index} />)
+                    <TinyCard content={content} from={from} to={to} id={index} />
+                    )
                         })}
                     </div>
 
                 </PageTemplate> :
                 <div>
                     <PageTemplate>
-                        <h1>{title}</h1>
-                        <div>{content}</div>
+                    <div className='flex justify-center items-center mx-[10%] w-[80%]'>
+                    <BigPostcard content={content} from={from} to={to} />
+                    </div>
                     </PageTemplate>
                 </div>}
         </div>
