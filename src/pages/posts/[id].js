@@ -78,9 +78,9 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                                 const [content, from, to, idfrom, idto, date, image] = ele;
 
                                 return (
-                                    <div key={index}>
+                                    <a href={"/posts/" + (index + 1)}>
                                         <TinyCard content={content} from={from} to={to} id={index} image={image} />
-                                    </div>
+                                    </a>
                                 )
                             })}
                         </div></div> : <div>
@@ -91,9 +91,9 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                                 }
                                 const [content, from, to, idfrom, idto, date, image] = ele;
                                 return (
-                                    <div>
+                                    <a href={"/posts/" + (index + 1)}>
                                         <TinyCard content={content} from={from} to={to} id={index} image={image} />
-                                    </div>
+                                    </a>
                                 )
                             })}
                         </div></div>}
