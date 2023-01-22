@@ -61,7 +61,11 @@ const Postcard = () => {
 
         const form = event.target;
         const data = new FormData(f);
-        data.append("ID", uid);
+        const frm = data.get("To");
+        if (frm == null) { return; }
+        const froom = frm;
+        data.append("IDFROM", uid);
+        data.append("IDTO", froom);
         fetch(url, {
             method: 'POST',
             body: data,
