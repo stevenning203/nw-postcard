@@ -20,6 +20,7 @@ export default function Navbar() {
             <div className='ml-auto text-4xl h-auto flex pr-5'>
                 <NavbarElement href='/posts/0'>Gallery</NavbarElement>
                 <NavbarElement href='/editor'>Editor</NavbarElement>
+                <NavbarElement href='/about'>About</NavbarElement>
                 {!user && <NavbarElement href="/api/auth/login">Login</NavbarElement>}
                 {user && <NavbarElement href="/api/auth/logout">Logout</NavbarElement>}
             </div>
