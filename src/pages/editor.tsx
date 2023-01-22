@@ -1,5 +1,5 @@
 import Footer from '@/components/footer'
-import { EditorBar } from '@/components/navbar'
+// import { EditorBar } from '@/components/navbar'
 import PageTemplate from '@/components/page_template'
 import PostCard from '@/components/postcard'
 import Head from 'next/head'
@@ -11,7 +11,7 @@ const Editor = () => {
             <Head>
                 <title>Editor</title>
             </Head>
-            <EditorBar />
+            {/* <EditorBar /> */}
             <PostCard />
             <Footer />
         </div>
