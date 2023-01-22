@@ -56,7 +56,7 @@ display: flex;
 flex-direction: column;
 `
 export const Message = styled.div`
-font-size: 17px;
+font-size: 1rem;
 white-space: pre-wrap;
 font-weight: 2000;
 line-height: 1.8;
@@ -67,7 +67,9 @@ padding:10px;
 padding-bottom: 0;
 padding-left: 15px;
 resize: none;
+overflow-y: scroll;
 `
+
 export const Divider = styled.div`
 border-left: 2px solid black;
 height: 150px;
@@ -81,17 +83,17 @@ height: 100%;
 display: flex;
 flex-direction: column;
 padding-left:10px;
-margin-top: -50px;
+margin-top: -15%;
 `
 export const From = styled.textarea`
-font-size: 15px;
+font-size: 10px;
 line-height: 1;
 letter-spacing: 2;
 font-family: "Roboto Slab";
 resize: none;
 `
 export const To = styled.textarea`
-font-size: 15px;
+font-size: 10px;
 line-height: 1;
 letter-spacing: 2;
 resize: none;

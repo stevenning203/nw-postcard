@@ -5,7 +5,7 @@ import lzString from "lz-string";
 import {useRef, useState } from 'react'
 import CanvasDraw from "react-canvas-draw";
 
-const TinyCard = (props: {content:string, from:string, to:string, index:number, image:string }) => {
+const TinyCard = (props: {content:string, from:string, to:string, index:number, image:string, sticker:string }) => {
     const [brushColor, setBrushColor] = useState("black");  
     const canvasRef = useRef<CanvasDraw>(null);
 
@@ -20,7 +20,7 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
     ];
 
     const canvasProps = {
-        className: classNames("canvas", "scale-[35%]", "ml-[0%]"),
+        className: classNames("canvas", "scale-[50%]", "ml-[10%]"),
         brushColor,
         ref: canvasRef,
         catenaryColor: brushColor,
@@ -39,11 +39,12 @@ const TinyCard = (props: {content:string, from:string, to:string, index:number, 
                 <Form>
                     <GridWrap>
                         <MessageWrap>
+                        {props.sticker && <img className='w-10 h-10 mt-[-22%]' src={props.sticker} alt="tiny stick" />}
                             <Message>{props.content}</Message>
                             <Flowers />
                         </MessageWrap>
                         <Divider />
-                        <FromToWrap>
+                        <FromToWrap className='3xl'>
                                 <CanvasDraw {...canvasProps} />
                             <From
                                 defaultValue={props.from}

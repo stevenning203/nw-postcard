@@ -206,7 +206,7 @@ const Postcard = () => {
                     <PostCardTitle>POSTCARD</PostCardTitle>
                             <GridWrap>
                                 <MessageWrap>
-          <img className='w-16 h-16 mt-[-25%]' src={sticker} alt="" />
+          <img className='w-16 h-16 mt-[-25%]' src={sticker} alt="sticker here" />
                                     
                                     <Message
                                         required
