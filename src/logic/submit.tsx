@@ -11,20 +11,14 @@ import { UserProfile } from "@auth0/nextjs-auth0/client";
  * 
  * @param post_card the post card to submit
  */
-export default function SubmitPostCard(event: any): void {
-    const { user, error, isLoading } = useUser();
-
+export default function SubmitPostCard(event: any, f: HTMLFormElement): void {
     const url = "https://script.google.com/macros/s/AKfycbzN3-Gv8UmruqE1Ejh_CfS19_1s8ObCoecutDUbAsOPNF9VM54HouqNFvk0tH-Rgrl2/exec";
-
-    if (user == undefined) {
-        throw new Error("User was not signed in when Submit() was called.");
-    }
 
     // todo
     event.preventDefault();
 
     const form = event.target;
-    const data = new FormData(form);
+    const data = new FormData(f);
     fetch(url, {
         method: 'POST',
         body: data,

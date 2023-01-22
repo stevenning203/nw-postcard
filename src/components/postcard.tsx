@@ -3,6 +3,7 @@ import { useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 import classNames from 'classnames';
 import React from 'react';
+import SubmitPostCard from '@/logic/submit';
 
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
@@ -46,6 +47,7 @@ const Postcard = () => {
 
     const [brushColor, setBrushColor] = useState("black");
     const canvasRef = React.createRef();
+    const ref = React.useRef(null);
 
 
     const props = {
@@ -91,15 +93,16 @@ const Postcard = () => {
                 </NavbarElement>
             </div>
 
-            <div className='ml-auto pr-5'><form onSubmit={() => { }}><button type='submit'>
-                <ExportIcon />
-            </button></form></div>
+                <div className='ml-auto pr-5'></div>
         </nav >
 
         <Container>
             <PostcardWrap>
                 <PostCardTitle>POSTCARD</PostCardTitle>
-                <Form>
+                    <Form ref={ref} onSubmit={(e) => {
+                        e.preventDefault();
+                        SubmitPostCard(e, document.forms[0]);
+                    }}>
                     <ComponentsWrap>
                         <GridWrap>
                             <MessageWrap>
@@ -110,6 +113,7 @@ const Postcard = () => {
                                     multiline
                                     maxRows={3}
                                     variant="standard"
+                                        name="Content"
 
                                     inputProps={{
                                         style: {
@@ -137,6 +141,7 @@ const Postcard = () => {
                                     multiline
                                     maxRows={2}
                                     variant="standard"
+                                        name='From'
 
                                     inputProps={{
                                         style: {
@@ -154,6 +159,7 @@ const Postcard = () => {
                                     multiline
                                     maxRows={2}
                                     variant="standard"
+                                        name='To'
 
                                     inputProps={{
                                         style: {
@@ -168,6 +174,9 @@ const Postcard = () => {
                             </FromToWrap>
                         </GridWrap>
                     </ComponentsWrap>
+                        <button type='submit'>
+                            <ExportIcon />
+                        </button>
                 </Form>
             </PostcardWrap>
         </Container>
