@@ -91,7 +91,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                 </PageTemplate> :
                 <div>
                     <PageTemplate>
-                    <div className='flex justify-center items-center mx-[10%] w-[80%]'>
+                        <div className='flex justify-center items-center mx-[10%] w-[80%] my-16'>
                     <BigPostcard content={content} from={from} to={to} />
                     </div>
                     </PageTemplate>
