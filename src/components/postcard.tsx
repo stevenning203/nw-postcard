@@ -1,10 +1,15 @@
 import { CD, Container, PostcardWrap, Form, PostCardTitle, GridWrap, ImgWrap, Stamp, MessageWrap, Message, Divider, FromToWrap, From, To, Flowers, UndoIcon, SearchIcon, LeftArrowIcon, AddIcon, ProfileIcon, ExportIcon, CPick } from './postcardElements'
 import { useState } from "react";
 import classNames from 'classnames';
-import React from 'react';
 import SubmitPostCard from '@/logic/submit';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import lzString from "lz-string";
 function NavbarElement(props: { className?: string, children: React.ReactNode, href: string }) {
     return (
@@ -106,6 +111,21 @@ const Postcard = () => {
         catenaryColor: brushColor,
     };
 
+    
+
+
+
+
+
+
+
+    const [sticker, setSticker] = React.useState('');
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setSticker(event.target.value);
+      };
+
+
     return (
         <>
             <nav className='bg-[#EBE3D7] items-center flex'>
@@ -130,6 +150,29 @@ const Postcard = () => {
                         canvasRef.current.undo();
                     }} />
 
+
+        <InputLabel id="demo-simple-select-helper-label" />
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={sticker}
+          label="stickers"
+          name='Sticker'
+          onChange={(e)=>handleChange(e)}
+        >
+          <MenuItem value="stars.gif" onChange={() => {}}>
+          <img className='w-10' src={'stars.gif'} alt="" />
+          </MenuItem>
+          <MenuItem value="flowerG.gif">
+          <img className='w-10' src={'flowerG.gif'} alt="" />
+          </MenuItem>
+          <MenuItem value="hearts.gif">
+          <img className='w-10' src={'hearts.gif'} alt="" />
+          </MenuItem>
+        </Select>
+
+        
+
                     <NavbarElement className='items-center' href='/'>
                         <ProfileIcon />
                     </NavbarElement>
@@ -147,6 +190,8 @@ const Postcard = () => {
                     }}>
                             <GridWrap>
                                 <MessageWrap>
+          <img className='w-16 h-16 mt-[-25%]' src={sticker} alt="" />
+                                    
                                     <Message
                                         required
                                         label="Required"
