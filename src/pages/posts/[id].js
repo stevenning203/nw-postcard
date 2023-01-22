@@ -75,7 +75,7 @@ export default function Post({ content, from, to, idto, idfrom, gallery = false,
                     {box ? <div>
                         <div className='flex min-h-[16rem] justify-center flex-wrap gap-10 mb-48 mx-[10%] w-[80%] p-10 rounded-lg bg-orange-100'>
                             {array.map((ele, index) => {
-                                if (ele[3] != user.nickname || index == 0) {
+                                if (ele[4] != user.nickname || index == 0) {
                                     return;
                                 }
 
